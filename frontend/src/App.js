@@ -364,7 +364,7 @@ function StatCard({ label, value, sub, icon, accent, glow = "" }) {
             alignItems: "flex-start",
           }}
         >
-          <div>
+          <div style={{ flex: 1, minWidth: 0, overflow: "hidden" }}>
             <div
               style={{
                 fontSize: 11,
@@ -380,10 +380,13 @@ function StatCard({ label, value, sub, icon, accent, glow = "" }) {
             <div
               className="display"
               style={{
-                fontSize: 38,
+                fontSize: "clamp(18px, 2.4vw, 34px)",
                 fontWeight: 800,
                 color: T.text,
                 lineHeight: 1,
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
               }}
             >
               {value ?? "—"}
@@ -4217,12 +4220,10 @@ function DistributionPage({ toast }) {
             value={form.victim_id}
             onChange={hc}
             required
-            options={victims
-              .slice(0, 100)
-              .map((v) => ({
-                value: v.victim_id,
-                label: `#${v.victim_id} — ${v.victim_first_name} ${v.victim_last_name} [${v.health_status}]`,
-              }))}
+            options={victims.slice(0, 100).map((v) => ({
+              value: v.victim_id,
+              label: `#${v.victim_id} — ${v.victim_first_name} ${v.victim_last_name} [${v.health_status}]`,
+            }))}
           />
           <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
             <ActionBtn onClick={add} color={T.pink} loading={sub} icon="⇢">

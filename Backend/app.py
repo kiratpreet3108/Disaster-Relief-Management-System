@@ -15,7 +15,7 @@ CORS(app)
 # ── DB Config ─────────────────────────────────────────────────
 DB_USER     = "system"
 DB_PASSWORD = "31082006"
-DB_DSN      = "localhost:1521/XE"
+DB_DSN      = "oracle_db:1521/XEPDB1"
 
 
 def get_conn():
@@ -597,4 +597,4 @@ if __name__ == "__main__":
     print("  UCS310 · TIET Patiala · 2025-26")
     print("  http://127.0.0.1:5000")
     print("=" * 55)
-    app.run(debug=True, port=5000)
+    app.run(host="0.0.0.0", port=5000, debug=True)
